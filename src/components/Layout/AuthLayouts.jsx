@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export const AuthLayout = (props) => {
   const { children, title, subtitle, background, type } = props;
   return (
-    <div className="max-w-screen h-screen lg:flex">
+    <div className="max-w-screen h-screen lg:flex bg-[#F9F9F9]">
       <div className="h-screen flex justify-center items-center lg:w-2/4">
         <div className="flex flex-col gap-6">
           <div className="flex-col gap-2 ">
