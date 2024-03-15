@@ -21,14 +21,12 @@ export const AuthLayout = (props) => {
             {type === "login"
               ? "Don’t have an account?"
               : "Do you have an account?"}
-
             {type === "login" && (
               <Link to="/register" className="font-bold text-[#635BFF]">
                 {" "}
                 Sign up
               </Link>
             )}
-
             {type === "register" && (
               <Link to="/login" className="font-bold text-[#635BFF]">
                 {" "}
