@@ -36,7 +36,7 @@ export const AuthLayout = (props) => {
           </p>
         </div>
       </div>
-      <div className="hidden h-screen flex justify-center items-center lg:block lg:w-2/4 lg:flex lg:justify-center lg:items-center">
+      <div className="hidden h-screen justify-center items-center lg:w-2/4 lg:flex lg:justify-center lg:items-center">
         <img
           className="w-3/4 h-auto"
           alt="illustration-login"
