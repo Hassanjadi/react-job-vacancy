@@ -1,15 +1,16 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
 import "./index.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import React from "react";
+import { Home } from "./pages/home";
+import ReactDOM from "react-dom/client";
+import { ErrorPage } from "./pages/404.jsx";
 import { LoginPage } from "./pages/login.jsx";
 import { RegisterPage } from "./pages/register.jsx";
-import { ErrorPage } from "./pages/404.jsx";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: "Hello World",
+    element: <Home />,
     errorElement: <ErrorPage />,
   },
   {
