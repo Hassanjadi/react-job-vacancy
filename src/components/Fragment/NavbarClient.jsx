@@ -14,8 +14,8 @@ export const NavbarClient = () => {
   };
 
   return (
-    <div className="w-full px-4 lg:px-24 py-5 z-50 fixed bg-[#F9F9F9]">
-      <div className="flex justify-between items-center mx-auto md:container">
+    <div className="w-full py-5 z-50 fixed bg-[#F9F9F9]">
+      <div className="container mx-auto px-4 md:px-8 lg:px-16 flex justify-between items-center">
         <img
           src="https://i.ibb.co/zNDdmtV/logo-lokerin.png"
           alt="Logo LokerIn"
@@ -82,7 +82,7 @@ export const NavbarClient = () => {
               <Link to="#" className="font-normal text-lg hover:font-semibold">
                 Dashboard
               </Link>
-              <Button classname="bg-[#635BFF">Sign In</Button>
+              <Button classname="bg-[#635BFF]">Sign In</Button>
             </div>
           </div>
         )}
