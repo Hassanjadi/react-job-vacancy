@@ -1,5 +1,6 @@
-import { Input } from "../Element/Input/Input";
+import React from "react";
 import { Button } from "../Element/Button";
+import { Input } from "../Element/Input/Input";
 
 export const Hero = () => {
   return (
@@ -20,7 +21,7 @@ export const Hero = () => {
               <Input placeholder="Search Job" />
               <Button classname="bg-[#635BFF]">Search</Button>
             </div>
-            <div className="w-full flex gap-6 md:justify-center">
+            <div className="w-full flex gap-6 md:justify-center lg:justify-start">
               <div className="flex gap-2 items-center">
                 <div className="w-6 h-6">
                   <img
