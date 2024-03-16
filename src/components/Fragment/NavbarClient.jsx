@@ -25,7 +25,10 @@ export const NavbarClient = () => {
           <Link to="/" className="font-normal text-lg hover:font-semibold">
             Home
           </Link>
-          <Link to="#" className="font-normal text-lg hover:font-semibold">
+          <Link
+            to="/job-vacancy"
+            className="font-normal text-lg hover:font-semibold"
+          >
             Job Vacancy
           </Link>
           <Link to="#" className="font-normal text-lg hover:font-semibold">
