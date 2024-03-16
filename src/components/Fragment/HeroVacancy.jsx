@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 export const HeroVacancy = () => {
   return (
@@ -11,8 +11,8 @@ export const HeroVacancy = () => {
         />
       </div>
       <h1 className="absolute w-4/5 md:w-2/4 lg:w-1/2 top-32 left-4 font-extrabold text-2xl lg:top-44 md:left-16 lg:left-28 lg:text-[40px] text-[#635BFF] leading-tight">
-        Search between more than 50,000 available jobs
+        Search between more than 50.000 available jobs
       </h1>
     </section>
   );
-}
+};
