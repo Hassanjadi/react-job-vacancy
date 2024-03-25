@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Button } from "../Element/Button";
 
 export const NavbarClient = () => {
@@ -17,23 +17,23 @@ export const NavbarClient = () => {
     <div className="w-full py-5 z-50 fixed bg-[#F9F9F9]">
       <div className="container mx-auto px-4 md:px-8 lg:px-16 flex justify-between items-center">
         <img
-          src="https://i.ibb.co/zNDdmtV/logo-lokerin.png"
+          src="https:/i.ibb.co/zNDdmtV/logo-lokerin.png"
           alt="Logo LokerIn"
           className="h-10"
         />
         <div className="hidden lg:flex gap-8">
-          <Link to="/" className="font-normal text-lg hover:font-semibold">
+          <NavLink to="/" className="font-normal text-lg hover:font-semibold">
             Home
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="/job-vacancy"
             className="font-normal text-lg hover:font-semibold"
           >
             Job Vacancy
-          </Link>
-          <Link to="#" className="font-normal text-lg hover:font-semibold">
+          </NavLink>
+          <NavLink to="#" className="font-normal text-lg hover:font-semibold">
             Dashboard
-          </Link>
+          </NavLink>
         </div>
         <button className="lg:hidden focus:outline-none" onClick={toggleMenu}>
           <svg
@@ -76,15 +76,24 @@ export const NavbarClient = () => {
                   </svg>
                 </button>
               </div>
-              <Link to="/" className="font-normal text-lg hover:font-semibold">
+              <NavLink
+                to="/"
+                className="font-normal text-lg hover:font-semibold"
+              >
                 Home
-              </Link>
-              <Link to="#" className="font-normal text-lg hover:font-semibold">
+              </NavLink>
+              <NavLink
+                to="#"
+                className="font-normal text-lg hover:font-semibold"
+              >
                 Job Vacancy
-              </Link>
-              <Link to="#" className="font-normal text-lg hover:font-semibold">
+              </NavLink>
+              <NavLink
+                to="#"
+                className="font-normal text-lg hover:font-semibold"
+              >
                 Dashboard
-              </Link>
+              </NavLink>
               <Button classname="bg-[#635BFF]">Sign In</Button>
             </div>
           </div>
