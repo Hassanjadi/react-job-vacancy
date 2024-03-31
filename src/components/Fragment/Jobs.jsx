@@ -199,7 +199,7 @@ export const Jobs = () => {
         <div className="flex justify-center items-center gap-1 pt-6">
           <p className="flex gap-2">Did not find what you’re looking for?</p>
           {""}
-          <Link to="/vacancy" className="text-indigo-500">
+          <Link to="/job-vacancy" className="text-indigo-500">
             View all jobs
           </Link>
         </div>
