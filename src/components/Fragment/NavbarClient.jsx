@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { Button } from "../Element/Button";
+import { Link, NavLink } from "react-router-dom";
 
 export const NavbarClient = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -83,7 +82,7 @@ export const NavbarClient = () => {
                 Home
               </NavLink>
               <NavLink
-                to="#"
+                to="/job-vacancy"
                 className="font-normal text-lg hover:font-semibold"
               >
                 Job Vacancy
@@ -94,12 +93,22 @@ export const NavbarClient = () => {
               >
                 Dashboard
               </NavLink>
-              <Button classname="bg-[#635BFF]">Sign In</Button>
+              <Link
+                to="/login"
+                className="h-10 px-6 font-medium text-base rounded-md text-white bg-[#635BFF] flex items-center"
+              >
+                Sign In
+              </Link>
             </div>
           </div>
         )}
         <div className="hidden lg:flex gap-4 items-center">
-          <Button classname="bg-[#635BFF]">Sign In</Button>
+          <Link
+            to="/login"
+            className="h-10 px-6 font-medium text-base rounded-md text-white bg-[#635BFF] flex items-center"
+          >
+            Sign In
+          </Link>
         </div>
       </div>
     </div>
