@@ -30,7 +30,10 @@ export const NavbarClient = () => {
           >
             Job Vacancy
           </NavLink>
-          <NavLink to="#" className="font-normal text-lg hover:font-semibold">
+          <NavLink
+            to="/dashboard"
+            className="font-normal text-lg hover:font-semibold"
+          >
             Dashboard
           </NavLink>
         </div>
