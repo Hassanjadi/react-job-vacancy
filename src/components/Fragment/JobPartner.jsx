@@ -1,4 +1,9 @@
 import React from "react";
+import Sanbercode from "../../assets/images/Sanbercode.png";
+import Gojek from "../../assets/images/Gojek.png";
+import Tiket from "../../assets/images/Tiket.png";
+import Bri from "../../assets/images/Bri.png";
+import Shopee from "../../assets/images/Shopee.png";
 
 export const JobPartner = () => {
   return (
@@ -9,22 +14,19 @@ export const JobPartner = () => {
         </h1>
         <div className="flex flex-wrap justify-center gap-6 lg:justify-between">
           <div className="flex justify-center items-center">
-            <img
-              src="https://i.ibb.co/YpRzPyS/Sanbercode.png"
-              alt="Sanbercode"
-            />
+            <img src={Sanbercode} alt="Sanbercode" />
           </div>
           <div className="flex justify-center items-center">
-            <img src="https://i.ibb.co/NnjSmHX/Gojek.png" alt="Gojek" />
+            <img src={Gojek} alt="Gojek" />
           </div>
           <div className="flex justify-center items-center">
-            <img src="https://i.ibb.co/gRmvNvM/Tiket.png" alt="Tiket" />
+            <img src={Tiket} alt="Tiket" />
           </div>
           <div className="flex justify-center items-center">
-            <img src="https://i.ibb.co/h1RtJgh/BRI.png" alt="BRI" />
+            <img src={Bri} alt="BRI" />
           </div>
           <div className="flex justify-center items-center">
-            <img src="https://i.ibb.co/LYG69pz/Shopee.png" alt="Shopee" />
+            <img src={Shopee} alt="Shopee" />
           </div>
         </div>
       </div>

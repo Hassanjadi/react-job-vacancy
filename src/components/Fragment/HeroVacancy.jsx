@@ -1,11 +1,12 @@
 import React from "react";
+import VacancyImages from "../../assets/images/VacancyImages.jpg";
 
 export const HeroVacancy = () => {
   return (
     <section className="max-w-screen relative">
       <div className="pt-5 lg:w-full">
         <img
-          src="https://i.ibb.co/bFJDX2w/Hero-Background.jpg"
+          src={VacancyImages}
           alt="Hero-Background"
           className="w-full h-64 lg:h-auto"
         />

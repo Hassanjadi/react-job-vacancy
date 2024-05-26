@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import Logo from "../../assets/images/Logo.png";
 
 export const NavbarClient = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,11 +16,7 @@ export const NavbarClient = () => {
   return (
     <div className="w-full py-5 z-50 fixed bg-[#F9F9F9]">
       <div className="container mx-auto px-4 md:px-8 lg:px-16 flex justify-between items-center">
-        <img
-          src="https:/i.ibb.co/zNDdmtV/logo-lokerin.png"
-          alt="Logo LokerIn"
-          className="h-10"
-        />
+        <img src={Logo} alt="Logo LokerIn" className="h-10" />
         <div className="hidden lg:flex gap-8">
           <NavLink to="/" className="font-normal text-lg hover:font-semibold">
             Home

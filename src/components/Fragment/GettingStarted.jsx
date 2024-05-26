@@ -1,4 +1,7 @@
 import React from "react";
+import Login from "../../assets/images/Login.png";
+import Upload from "../../assets/images/Upload.png";
+import Matches from "../../assets/images/Matches.png";
 
 export const GettingStarted = () => {
   return (
@@ -16,10 +19,7 @@ export const GettingStarted = () => {
         <div className="p-6 bg-[#E5EDFB] rounded-xl lg:p-16">
           <div className="flex flex-col gap-4 lg:flex-row-reverse lg:items-center">
             <div className="flex justify-center items-center lg:w-2/5">
-              <img
-                src="https://i.ibb.co/h28hrM5/illustration-login.png"
-                alt="Illustration"
-              />
+              <img src={Login} alt="Illustration" />
             </div>
             <div className="flex flex-col gap-4 w-full lg:w-3/5">
               <h1 className="font-black text-2xl">01</h1>
@@ -38,10 +38,7 @@ export const GettingStarted = () => {
           <div className="p-6 bg-[#E6E6F9] rounded-xl lg:p-16 lg:w-1/2">
             <div className="flex flex-col gap-4">
               <div className="flex justify-center items-center">
-                <img
-                  src="https://i.ibb.co/Jn7tv0h/Upload-Resume.png"
-                  alt="Upload-Resume"
-                />
+                <img src={Upload} alt="Upload-Resume" />
               </div>
               <div className="flex flex-col gap-4 w-full">
                 <h1 className="font-black text-2xl">02</h1>
@@ -57,10 +54,7 @@ export const GettingStarted = () => {
           <div className="p-6 bg-[#E5FBF2] rounded-xl lg:p-16 lg:w-1/2">
             <div className="flex flex-col gap-4">
               <div className="flex justify-center items-center">
-                <img
-                  src="https://i.ibb.co/VmhXMhR/Find-Job.png"
-                  alt="Find-Job"
-                />
+                <img src={Matches} alt="Find-Job" />
               </div>
               <div className="flex flex-col gap-4 w-full">
                 <h1 className="font-black text-2xl">03</h1>

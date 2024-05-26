@@ -1,6 +1,8 @@
 import React from "react";
 import { Button } from "../Element/Button";
 import { Input } from "../Element/Input/Input";
+import HeroImages from "../../assets/images/HeroImages.png";
+import Checklist from "../../assets/images/Checklist.png";
 
 export const Hero = () => {
   return (
@@ -25,7 +27,7 @@ export const Hero = () => {
               <div className="flex gap-2 items-center">
                 <div className="w-6 h-6">
                   <img
-                    src="https://i.ibb.co/qgz3wrd/Checklist.png"
+                    src={Checklist}
                     alt="Checklist"
                     className="w-full h-full"
                   />
@@ -35,7 +37,7 @@ export const Hero = () => {
               <div className="flex gap-2 items-center">
                 <div>
                   <img
-                    src="https://i.ibb.co/qgz3wrd/Checklist.png"
+                    src={Checklist}
                     alt="Checklist"
                     className="w-full h-full"
                   />
@@ -46,10 +48,7 @@ export const Hero = () => {
           </div>
           <div className="flex justify-center lg:w-1/2 lg:justify-end">
             <div>
-              <img
-                src="https://i.ibb.co/3MdtVVQ/illustration-jumbotron.png"
-                alt="illustration-jumbotron"
-              />
+              <img src={HeroImages} alt="illustration-jumbotron" />
             </div>
           </div>
         </div>

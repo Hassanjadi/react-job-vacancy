@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Setup from "../../assets/images/Setup.png";
 
 export const SetupAlert = () => {
   return (
@@ -19,7 +20,7 @@ export const SetupAlert = () => {
           </div>
           <div className="flex justify-center items-center lg:w-1/2">
             <img
-              src="https://i.ibb.co/WcbLGNP/Setup.png"
+              src={Setup}
               alt="Illustration Setup"
               className="w-full h-full"
             />
