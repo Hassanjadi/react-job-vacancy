@@ -1,7 +1,12 @@
+import { useEffect, useRef } from "react";
 import { Button } from "../Element/Button";
 import { InputForm } from "../Element/Input";
 
 export const FormRegister = () => {
+  const registerRef = useRef(null);
+  useEffect(() => {
+    registerRef.current.focus();
+  }, []);
   return (
     <form className="flex flex-col gap-5">
       <InputForm
@@ -9,6 +14,7 @@ export const FormRegister = () => {
         type="text"
         name="username"
         placeholder="John Doe"
+        ref={registerRef}
       />
       <InputForm
         label="Email"
