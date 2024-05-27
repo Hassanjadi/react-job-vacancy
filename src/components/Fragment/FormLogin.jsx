@@ -1,7 +1,12 @@
+import { useEffect, useRef } from "react";
 import { Button } from "../Element/Button";
 import { InputForm } from "../Element/Input";
 
 export const FormLogin = () => {
+  const emailRef = useRef(null);
+  useEffect(() => {
+    emailRef.current.focus();
+  }, []);
   return (
     <form className="flex flex-col gap-5">
       <InputForm
@@ -9,6 +14,7 @@ export const FormLogin = () => {
         type="email"
         name="email"
         placeholder="example@gmail.com"
+        ref={emailRef}
       />
       <InputForm
         label="Password"
