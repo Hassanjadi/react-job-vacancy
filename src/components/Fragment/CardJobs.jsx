@@ -25,7 +25,7 @@ export const CardJobs = () => {
                   />
                 </div>
                 <div className="flex flex-col gap-4">
-                  <p className="text-base font-bold">{job.job_title}</p>
+                  <p className="text-base font-bold">{job.title}</p>
                   <div className="flex gap-2 text-sm font-semibold text-gray-400">
                     <p>{job.company_name}</p>&bull;
                     <p>{job.company_city}</p>
