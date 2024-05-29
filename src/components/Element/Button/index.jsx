@@ -1,9 +1,15 @@
 export const Button = (props) => {
-  const { children, classname = "bg-black" } = props;
+  const {
+    children,
+    classname = "bg-black",
+    onClick = () => {},
+    type = "button",
+  } = props;
   return (
     <button
-      type="submit"
+      type={type}
       className={`h-10 px-6 font-medium text-base rounded-md ${classname} text-white`}
+      onClick={() => onClick()}
     >
       {children}
     </button>
