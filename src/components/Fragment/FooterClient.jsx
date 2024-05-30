@@ -24,13 +24,16 @@ export const FooterClient = () => {
               </Link>
             </div>
             <div class="flex flex-row justify-center gap-4">
-              <Link to="#" class="text-[#525E76]">
+              <Link to="https://github.com/Hassanjadi" class="text-[#525E76]">
                 <FeatherIcon icon="github" fill="#525E76" stroke="#525E76" />
               </Link>
-              <Link to="#" class="text-[#525E76]">
+              <Link
+                to="https://www.linkedin.com/in/hassanjadi/"
+                class="text-[#525E76]"
+              >
                 <FeatherIcon icon="linkedin" fill="#525E76" stroke="#525E76" />
               </Link>
-              <Link to="#" class="text-[#525E76]">
+              <Link to="" class="text-[#525E76]">
                 <FeatherIcon icon="twitter" fill="#525E76" stroke="#525E76" />
               </Link>
             </div>
