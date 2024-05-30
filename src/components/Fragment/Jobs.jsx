@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { CardJobs } from "./CardJobs";
+import { Link } from "react-router-dom";
 
 export const Jobs = () => {
   return (

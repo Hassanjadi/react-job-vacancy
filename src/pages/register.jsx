@@ -1,7 +1,7 @@
 import React from "react";
+import Register from "../assets/images/Register.png";
 import { AuthLayout } from "../components/Layout/AuthLayouts";
 import { FormRegister } from "../components/Fragment/FormRegister";
-import Register from "../assets/images/Register.png";
 
 export const RegisterPage = () => {
   return (

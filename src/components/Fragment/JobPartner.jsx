@@ -1,9 +1,9 @@
 import React from "react";
-import Sanbercode from "../../assets/images/Sanbercode.png";
+import Bri from "../../assets/images/Bri.png";
 import Gojek from "../../assets/images/Gojek.png";
 import Tiket from "../../assets/images/Tiket.png";
-import Bri from "../../assets/images/Bri.png";
 import Shopee from "../../assets/images/Shopee.png";
+import Sanbercode from "../../assets/images/Sanbercode.png";
 
 export const JobPartner = () => {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
+import Login from "../assets/images/Login.png";
 import { FormLogin } from "../components/Fragment/FormLogin";
 import { AuthLayout } from "../components/Layout/AuthLayouts";
-import Login from "../assets/images/Login.png";
 
 export const LoginPage = () => {
   return (
