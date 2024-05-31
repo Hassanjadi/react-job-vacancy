@@ -13,6 +13,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Cookies from "js-cookie";
+import { DetailJobPage } from "./pages/DetailJob";
 
 const AuthRoute = (props) => {
   if (Cookies.get("token") !== undefined) {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
         <RegisterPage />
       </AuthRoute>
     ),
+  },
+  {
+    path: "/job/:id",
+    element: <DetailJobPage />,
   },
 ]);
 
