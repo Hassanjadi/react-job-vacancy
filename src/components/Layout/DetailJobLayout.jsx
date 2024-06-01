@@ -9,7 +9,7 @@ export const DetailJobLayout = () => {
     <>
       <NavbarClient />
       <div className="h-[350px] bg-[#635BFF] w-full"></div>
-      <section className="w-full bg-[#F9F9F9] ">
+      <section className="w-full bg-[#F9F9F9] pb-16">
         <div className="container mx-auto flex justify-between px-4 md:px-8 lg:px-16">
           <CardDetail />
           <CardApply />

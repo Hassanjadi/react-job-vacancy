@@ -14,9 +14,8 @@ export const CardDetail = () => {
   }, [id]);
 
   return (
-    <div className="bg-white w-2/3 -mt-44 rounded-xl p-6">
-      <Button classname="bg-slate-200 text-gray-600">Back</Button>
-      <div className="flex items-start gap-6 my-8">
+    <div className="bg-white w-2/3 -mt-44 rounded-xl p-8">
+      <div className="flex items-start gap-6 mb-8">
         <div className="flex justify-center items-center bg-gray-100 max-w-[72px] min-h-[72px] p-4 rounded-lg">
           <img
             src={job.company_image_url}

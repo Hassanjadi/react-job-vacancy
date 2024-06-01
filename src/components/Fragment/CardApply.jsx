@@ -46,7 +46,7 @@ export const CardApply = () => {
   };
 
   return (
-    <div className="bg-white h-80 w-1/4 -mt-44 rounded-xl p-6">
+    <div className="bg-white h-80 w-1/4 -mt-44 rounded-xl p-8">
       <Button classname="bg-[#635BFF] text-white w-full">
         Apply for this position
       </Button>
