@@ -1,47 +1,40 @@
-import React, { useEffect, useState } from "react";
-import { getJobs } from "../../services/jobs.services";
+import React from "react";
 import { Link } from "react-router-dom";
+import { useJobs } from "../../Context/JobContext";
+
+const handleTime = (dateTime) => {
+  const currentDate = new Date();
+  const targetDate = new Date(dateTime);
+
+  const timeDifference = currentDate - targetDate;
+  const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+  if (daysDifference === 0) {
+    return "Today";
+  } else if (daysDifference === 1) {
+    return "Yesterday";
+  } else {
+    return `${daysDifference} days ago`;
+  }
+};
+
+const handleSalary = (salary) => {
+  if (typeof salary !== "number") {
+    return "Invalid input";
+  }
+
+  const units = ["", "k", "M", "B", "T"];
+  let unitIndex = 0;
+  while (salary >= 1000 && unitIndex < units.length - 1) {
+    salary /= 1000;
+    unitIndex++;
+  }
+
+  return `${salary.toFixed(0)}${units[unitIndex]}`;
+};
 
 export const CardJobs = () => {
-  const [jobs, setJobs] = useState([]);
-
-  const handleTime = (dateTime) => {
-    const currentDate = new Date();
-    const targetDate = new Date(dateTime);
-
-    const timeDifference = currentDate - targetDate;
-    const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-
-    if (daysDifference === 0) {
-      return "Today";
-    } else if (daysDifference === 1) {
-      return "Yesterday";
-    } else {
-      return `${daysDifference} days ago`;
-    }
-  };
-
-  const handleSalary = (salary) => {
-    if (typeof salary !== "number") {
-      return "Invalid input";
-    }
-
-    const units = ["", "k", "M", "B", "T"];
-    let unitIndex = 0;
-
-    while (salary >= 1000 && unitIndex < units.length - 1) {
-      salary /= 1000;
-      unitIndex++;
-    }
-
-    return `${salary.toFixed(0)}${units[unitIndex]}`;
-  };
-
-  useEffect(() => {
-    getJobs((data) => {
-      setJobs(data);
-    });
-  }, []);
+  const { jobs } = useJobs();
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
