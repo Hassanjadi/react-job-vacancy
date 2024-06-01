@@ -14,6 +14,7 @@ import {
 } from "react-router-dom";
 import Cookies from "js-cookie";
 import { DetailJobPage } from "./pages/DetailJob";
+import { JobProvider } from "./Context/JobContext.jsx";
 
 const AuthRoute = (props) => {
   if (Cookies.get("token") !== undefined) {
@@ -61,6 +62,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <JobProvider>
+      <RouterProvider router={router} />
+    </JobProvider>
   </React.StrictMode>
 );
