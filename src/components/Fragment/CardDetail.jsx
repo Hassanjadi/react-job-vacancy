@@ -14,7 +14,7 @@ export const CardDetail = () => {
   }, [id]);
 
   return (
-    <div className="bg-white w-2/3 -mt-44 rounded-xl p-8">
+    <div className="bg-white rounded-xl p-8 lg:w-2/3 lg:-mt-44 ">
       <div className="flex items-start gap-6 mb-8">
         <div className="flex justify-center items-center bg-gray-100 max-w-[72px] min-h-[72px] p-4 rounded-lg">
           <img

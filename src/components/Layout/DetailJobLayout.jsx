@@ -8,9 +8,9 @@ export const DetailJobLayout = () => {
   return (
     <>
       <NavbarClient />
-      <div className="h-[350px] bg-[#635BFF] w-full"></div>
-      <section className="w-full bg-[#F9F9F9] pb-16">
-        <div className="container mx-auto flex justify-between px-4 md:px-8 lg:px-16">
+      <div className="hidden lg:block lg:h-[350px] bg-[#635BFF] w-full"></div>
+      <section className="w-full min-h-screen pt-24 bg-[#F9F9F9] pb-16 lg:pt-0">
+        <div className="container mx-auto lg:flex justify-between px-4 lg:px-8">
           <CardDetail />
           <CardApply />
         </div>

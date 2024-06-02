@@ -3,6 +3,38 @@ import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { getDetailJob } from "../../services/jobs.services";
 
+const handleTime = (dateTime) => {
+  const currentDate = new Date();
+  const targetDate = new Date(dateTime);
+
+  const timeDifference = currentDate - targetDate;
+  const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+  if (daysDifference === 0) {
+    return "Today";
+  } else if (daysDifference === 1) {
+    return "Yesterday";
+  } else {
+    return `${daysDifference} days ago`;
+  }
+};
+
+const handleSalary = (salary) => {
+  if (typeof salary !== "number") {
+    return "Invalid input";
+  }
+
+  const units = ["", "k", "M", "B", "T"];
+  let unitIndex = 0;
+
+  while (salary >= 1000 && unitIndex < units.length - 1) {
+    salary /= 1000;
+    unitIndex++;
+  }
+
+  return `${salary.toFixed(0)}${units[unitIndex]}`;
+};
+
 export const CardApply = () => {
   const { id } = useParams();
   const [job, setJob] = useState({});
@@ -13,40 +45,8 @@ export const CardApply = () => {
     });
   }, [id]);
 
-  const handleTime = (dateTime) => {
-    const currentDate = new Date();
-    const targetDate = new Date(dateTime);
-
-    const timeDifference = currentDate - targetDate;
-    const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-
-    if (daysDifference === 0) {
-      return "Today";
-    } else if (daysDifference === 1) {
-      return "Yesterday";
-    } else {
-      return `${daysDifference} days ago`;
-    }
-  };
-
-  const handleSalary = (salary) => {
-    if (typeof salary !== "number") {
-      return "Invalid input";
-    }
-
-    const units = ["", "k", "M", "B", "T"];
-    let unitIndex = 0;
-
-    while (salary >= 1000 && unitIndex < units.length - 1) {
-      salary /= 1000;
-      unitIndex++;
-    }
-
-    return `${salary.toFixed(0)}${units[unitIndex]}`;
-  };
-
   return (
-    <div className="bg-white h-80 w-1/4 -mt-44 rounded-xl p-8">
+    <div className="bg-white rounded-xl p-8 mt-8 lg:h-80 lg:w-1/4 lg:-mt-44">
       <Button classname="bg-[#635BFF] text-white w-full">
         Apply for this position
       </Button>
