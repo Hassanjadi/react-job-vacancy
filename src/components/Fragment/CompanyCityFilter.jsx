@@ -31,7 +31,7 @@ export const CompanyCityFilter = () => {
     <select
       value={companyCity}
       onChange={(e) => setCompanyCity(e.target.value)}
-      className="px-2 py-1 border rounded-md"
+      className="px-2 py-1 border rounded-md outline-1 outline-slate-200"
     >
       <option value="">All Cities</option>
       {cities.map((city) => (
