@@ -33,13 +33,15 @@ const handleSalary = (salary) => {
   return `${salary.toFixed(0)}${units[unitIndex]}`;
 };
 
-export const CardJobs = () => {
+export const CardJobs = ({ limit }) => {
   const { jobs } = useJobs();
+
+  const limitedJobs = jobs.slice(0, limit);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {jobs.length > 0 &&
-        jobs.map((job) => (
+      {limitedJobs.length > 0 &&
+        limitedJobs.map((job) => (
           <div className="bg-white px-4 py-4 rounded-xl" key={job.id}>
             <Link to={`/job/${job.id}`}>
               <div className="flex flex-col h-[350px] justify-between">
