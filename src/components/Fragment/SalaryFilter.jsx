@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useJobs } from "../../Context/JobContext";
+import { useJobs } from "../../context/JobContext";
 
 export const SalaryFilter = () => {
   const { setSalaryRange } = useJobs();

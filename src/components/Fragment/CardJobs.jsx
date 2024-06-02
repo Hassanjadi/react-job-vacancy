@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useJobs } from "../../Context/JobContext";
+import { useJobs } from "../../context/JobContext";
 
 const handleTime = (dateTime) => {
   const currentDate = new Date();

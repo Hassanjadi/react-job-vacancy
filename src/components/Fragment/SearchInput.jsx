@@ -1,7 +1,7 @@
 // SearchInput.js
 import React from "react";
 import { Input } from "../Element/Input/Input";
-import { useJobs } from "../../Context/JobContext";
+import { useJobs } from "../../context/JobContext";
 
 export const SearchInput = () => {
   const { searchQuery, setSearchQuery } = useJobs();

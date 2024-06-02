@@ -8,7 +8,7 @@ import { LoginPage } from "./pages/Login.jsx";
 import { Dashboard } from "./pages/Dashboard";
 import { DetailJobPage } from "./pages/DetailJob";
 import { RegisterPage } from "./pages/Register.jsx";
-import { JobProvider } from "./Context/JobContext.jsx";
+import { JobProvider } from "./context/JobContext.jsx";
 import { ProtectedRoute } from "./components/utils/ProtectedRoute.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 

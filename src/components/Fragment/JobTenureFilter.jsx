@@ -1,5 +1,5 @@
 import React from "react";
-import { useJobs } from "../../Context/JobContext";
+import { useJobs } from "../../context/JobContext";
 
 export const JobTenureFilter = () => {
   const { jobTenure, setJobTenure } = useJobs();
