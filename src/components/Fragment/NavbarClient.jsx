@@ -33,14 +33,13 @@ export const NavbarClient = () => {
           >
             Job Vacancy
           </NavLink>
-          {Cookies.get("token") && (
-            <NavLink
-              to="/dashboard"
-              className="font-normal text-lg hover:font-semibold"
-            >
-              Dashboard
-            </NavLink>
-          )}
+
+          <NavLink
+            to="/dashboard"
+            className="font-normal text-lg hover:font-semibold"
+          >
+            Dashboard
+          </NavLink>
         </div>
         <button className="lg:hidden focus:outline-none" onClick={toggleMenu}>
           <svg
@@ -95,15 +94,12 @@ export const NavbarClient = () => {
               >
                 Job Vacancy
               </NavLink>
-              {Cookies.get("token") && (
-                <NavLink
-                  to="#"
-                  className="font-normal text-lg hover:font-semibold"
-                >
-                  Dashboard
-                </NavLink>
-              )}
-
+              <NavLink
+                to="#"
+                className="font-normal text-lg hover:font-semibold"
+              >
+                Dashboard
+              </NavLink>
               <Link
                 to="/login"
                 className="h-10 px-6 font-medium text-base rounded-md text-white bg-[#635BFF] flex items-center"
