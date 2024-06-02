@@ -4,25 +4,13 @@ import { Home } from "./pages/Home";
 import ReactDOM from "react-dom/client";
 import { Vacancy } from "./pages/Vacancy";
 import { ErrorPage } from "./pages/404.jsx";
-import { Dashboard } from "./pages/Dashboard";
 import { LoginPage } from "./pages/Login.jsx";
-import { RegisterPage } from "./pages/Register.jsx";
-import {
-  createBrowserRouter,
-  Navigate,
-  RouterProvider,
-} from "react-router-dom";
-import Cookies from "js-cookie";
+import { Dashboard } from "./pages/Dashboard";
 import { DetailJobPage } from "./pages/DetailJob";
+import { RegisterPage } from "./pages/Register.jsx";
 import { JobProvider } from "./Context/JobContext.jsx";
-
-const AuthRoute = (props) => {
-  if (Cookies.get("token") !== undefined) {
-    return <Navigate to={"/"} />;
-  } else if (Cookies.get("token") === undefined) {
-    return props.children;
-  }
-};
+import { ProtectedRoute } from "./components/utils/ProtectedRoute.jsx";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
@@ -36,22 +24,26 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: (
+      <ProtectedRoute requiresAuth={true}>
+        <Dashboard />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/login",
     element: (
-      <AuthRoute>
+      <ProtectedRoute requiresAuth={false}>
         <LoginPage />
-      </AuthRoute>
+      </ProtectedRoute>
     ),
   },
   {
     path: "/register",
     element: (
-      <AuthRoute>
+      <ProtectedRoute requiresAuth={false}>
         <RegisterPage />
-      </AuthRoute>
+      </ProtectedRoute>
     ),
   },
   {
