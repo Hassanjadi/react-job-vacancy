@@ -15,19 +15,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const router = createBrowserRouter([
   {
     path: "/job-vacancy",
-    element: (
-      <JobProvider>
-        <Vacancy />
-      </JobProvider>
-    ),
+    element: <Vacancy />,
   },
   {
     path: "/",
-    element: (
-      <JobProvider>
-        <Home />
-      </JobProvider>
-    ),
+    element: <Home />,
     errorElement: <ErrorPage />,
   },
   {
@@ -62,6 +54,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <JobProvider>
+      <RouterProvider router={router} />
+    </JobProvider>
   </React.StrictMode>
 );
