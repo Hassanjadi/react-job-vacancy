@@ -9,7 +9,7 @@ import { GettingStarted } from "../Fragment/GettingStarted";
 
 export const HomeLayout = () => {
   return (
-    <div>
+    <>
       <NavbarClient />
       <Hero />
       <JobPartner />
@@ -17,6 +17,6 @@ export const HomeLayout = () => {
       <Jobs />
       <SetupAlert />
       <FooterClient />
-    </div>
+    </>
   );
 };
