@@ -6,7 +6,7 @@ import { Vacancy } from "./pages/Vacancy.jsx";
 import { ErrorPage } from "./pages/404.jsx";
 import { LoginPage } from "./pages/Login.jsx";
 import { Dashboard } from "./pages/Dashboard";
-import { DetailJobPage } from "./pages/Dashboard.jsx";
+import { DetailJobPage } from "./pages/DetailJob.jsx";
 import { RegisterPage } from "./pages/Register.jsx";
 import { JobProvider } from "./context/JobContext.jsx";
 import { ProtectedRoute } from "./components/utils/ProtectedRoute.jsx";
