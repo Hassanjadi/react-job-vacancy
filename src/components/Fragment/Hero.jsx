@@ -10,8 +10,8 @@ export const Hero = () => {
       <div className="container mx-auto px-4 md:px-8 lg:px-16">
         <div className="flex flex-col-reverse mx-auto md:pt-16 lg:pt-32 lg:flex-row">
           <div className="flex flex-col gap-10 lg:w-1/2">
-            <div className="flex flex-col gap-6">
-              <h1 className="font-semibold text-5xl w-full">
+            <div className="flex flex-col gap-4">
+              <h1 className="font-bold text-5xl w-full">
                 The best place to find your dream job
               </h1>
               <p className="font-medium text-base w-full">
