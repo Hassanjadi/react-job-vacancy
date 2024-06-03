@@ -6,24 +6,26 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 
 export const FormLogin = () => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [input, setInput] = useState({
     email: "",
     password: "",
   });
 
-  const handleInput = (event) => {
-    let value = event.target.value;
-    let name = event.target.name;
+  const [loginFailed, setLoginFailed] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
+  const handleInput = (event) => {
+    const { name, value } = event.target;
     setInput({ ...input, [name]: value });
   };
 
   const handleLogin = (event) => {
     event.preventDefault();
-
     const { email, password } = input;
+
+    setIsLoading(true);
 
     axios
       .post("https://dev-example.sanbercloud.com/api/login", {
@@ -36,7 +38,10 @@ export const FormLogin = () => {
         navigate("/");
       })
       .catch((error) => {
-        alert(error.message);
+        setLoginFailed("Login failed. Please check your email and password.");
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
@@ -67,12 +72,16 @@ export const FormLogin = () => {
         required
         minLength="8"
       />
-      <Button classname="bg-[#635BFF] w-full" type="submit">
-        Login
+      <Button
+        classname="bg-[#635BFF] w-full"
+        type="submit"
+        disabled={isLoading}
+      >
+        {isLoading ? "Logging in..." : "Login"}
       </Button>
-      {/* {loginFailed && (
+      {loginFailed && (
         <p className="text-red-500 text-center text-sm">{loginFailed}</p>
-      )} */}
+      )}
     </form>
   );
 };
