@@ -14,6 +14,9 @@ export const FormRegister = () => {
     password: "",
   });
 
+  const [registerFailed, setRegisterFailed] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleInput = (event) => {
     let value = event.target.value;
     let name = event.target.name;
@@ -25,6 +28,8 @@ export const FormRegister = () => {
     event.preventDefault();
 
     const { name, image_url, email, password } = input;
+
+    setIsLoading(true);
 
     axios
       .post("https://dev-example.sanbercloud.com/api/register", {
@@ -39,7 +44,12 @@ export const FormRegister = () => {
         navigate("/login");
       })
       .catch((error) => {
-        alert(error.message);
+        setRegisterFailed(
+          "Registration failed. Please check your information."
+        );
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
@@ -86,9 +96,17 @@ export const FormRegister = () => {
         minLength="8"
         required
       />
-      <Button classname="bg-[#635BFF] w-full" type="submit">
-        Register
+
+      <Button
+        classname="bg-[#635BFF] w-full"
+        type="submit"
+        disabled={isLoading}
+      >
+        {isLoading ? "Register in..." : "Register"}
       </Button>
+      {registerFailed && (
+        <p className="text-red-500 text-center text-sm">{registerFailed}</p>
+      )}
     </form>
   );
 };
