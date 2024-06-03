@@ -28,7 +28,7 @@ export const NavbarClient = () => {
             Home
           </NavLink>
           <NavLink
-            to="/job-vacancy"
+            to="/vacancy"
             className="font-normal text-lg hover:font-semibold"
           >
             Job Vacancy
@@ -89,7 +89,7 @@ export const NavbarClient = () => {
                 Home
               </NavLink>
               <NavLink
-                to="/job-vacancy"
+                to="/vacancy"
                 className="font-normal text-lg hover:font-semibold"
               >
                 Job Vacancy

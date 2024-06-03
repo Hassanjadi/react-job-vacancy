@@ -1,4 +1,5 @@
 import React from "react";
+import { CardJobs } from "./CardJobs";
 import { Link } from "react-router-dom";
 
 export const Jobs = () => {
@@ -14,7 +15,7 @@ export const Jobs = () => {
             you get the best job possible
           </p>
         </div>
-        {/* <CardJobs limit={6} /> */}
+        <CardJobs limit={6} />
         <div className="flex justify-center items-center gap-1 mt-16">
           <p className="flex gap-2">Did not find what you’re looking for?</p>
           {""}
