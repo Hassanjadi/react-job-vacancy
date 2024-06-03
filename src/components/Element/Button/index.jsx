@@ -8,7 +8,7 @@ export const Button = (props) => {
   return (
     <button
       type={type}
-      className={`h-10 px-6 font-medium text-base rounded-md ${classname} text-white`}
+      className={`h-10 px-6 font-medium text-base rounded-md ${classname} text-white hover:bg-opacity-80`}
       onClick={() => onClick()}
     >
       {children}

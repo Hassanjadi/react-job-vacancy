@@ -113,7 +113,7 @@ export const NavbarClient = () => {
           {!Cookies.get("token") && (
             <Link
               to="/login"
-              className="h-10 px-6 font-medium text-base rounded-md text-white bg-[#635BFF] flex items-center"
+              className="h-10 px-6 font-medium text-base rounded-md text-white bg-[#635BFF]  flex items-center hover:bg-opacity-80"
             >
               Sign In
             </Link>
