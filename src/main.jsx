@@ -1,12 +1,12 @@
 import "./index.css";
 import React from "react";
-import { Home } from "./pages/Home";
+import { Home } from "./pages/Home.jsx";
 import ReactDOM from "react-dom/client";
-import { Vacancy } from "./pages/Vacancy";
+import { Vacancy } from "./pages/Vacancy.jsx";
 import { ErrorPage } from "./pages/404.jsx";
 import { LoginPage } from "./pages/Login.jsx";
 import { Dashboard } from "./pages/Dashboard";
-import { DetailJobPage } from "./pages/DetailJob";
+import { DetailJobPage } from "./pages/Dashboard.jsx";
 import { RegisterPage } from "./pages/Register.jsx";
 import { JobProvider } from "./context/JobContext.jsx";
 import { ProtectedRoute } from "./components/utils/ProtectedRoute.jsx";
