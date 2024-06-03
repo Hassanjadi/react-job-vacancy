@@ -16,7 +16,7 @@ export const Jobs = () => {
           </p>
         </div>
         <CardJobs limit={6} />
-        <div className="flex justify-center items-center gap-1 pt-6">
+        <div className="flex justify-center items-center gap-1 mt-16">
           <p className="flex gap-2">Did not find what you’re looking for?</p>
           {""}
           <Link to="/job-vacancy" className="text-indigo-500">
