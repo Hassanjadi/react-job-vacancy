@@ -100,12 +100,25 @@ export const NavbarClient = () => {
               >
                 Dashboard
               </NavLink>
-              <Link
-                to="/login"
-                className="h-10 px-6 font-medium text-base rounded-md text-white bg-[#635BFF] flex items-center"
-              >
-                Sign In
-              </Link>
+              {Cookies.get("token") && (
+                <Link
+                  onClick={() => {
+                    Cookies.remove("token");
+                    navigate("/");
+                  }}
+                  className="h-10 px-6 font-medium text-base rounded-md text-white bg-[#635BFF] flex items-center"
+                >
+                  Logout
+                </Link>
+              )}
+              {!Cookies.get("token") && (
+                <Link
+                  to="/login"
+                  className="h-10 px-6 font-medium text-base rounded-md text-white bg-[#635BFF] flex items-center"
+                >
+                  Sign In
+                </Link>
+              )}
             </div>
           </div>
         )}
