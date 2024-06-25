@@ -24,19 +24,33 @@ export const NavbarClient = () => {
       <div className="container mx-auto px-4 md:px-8 lg:px-16 flex justify-between items-center">
         <img src={Logo} alt="Logo LokerIn" className="h-10" />
         <div className="hidden lg:flex gap-8">
-          <NavLink to="/" className="font-normal text-lg hover:font-semibold">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive
+                ? "font-semibold text-lg transition-all duration-300"
+                : "text-lg hover:font-normal transition-all duration-300"
+            }
+          >
             Home
           </NavLink>
           <NavLink
             to="/vacancy"
-            className="font-normal text-lg hover:font-semibold"
+            className={({ isActive }) =>
+              isActive
+                ? "font-semibold text-lg transition-all duration-300"
+                : "text-lg hover:font-normal transition-all duration-300"
+            }
           >
             Job Vacancy
           </NavLink>
-
           <NavLink
             to="/dashboard"
-            className="font-normal text-lg hover:font-semibold"
+            className={({ isActive }) =>
+              isActive
+                ? "font-semibold text-lg transition-all duration-300"
+                : "text-lg hover:font-normal transition-all duration-300"
+            }
           >
             Dashboard
           </NavLink>
@@ -84,19 +98,34 @@ export const NavbarClient = () => {
               </div>
               <NavLink
                 to="/"
-                className="font-normal text-lg hover:font-semibold"
+                className={({ isActive }) =>
+                  isActive
+                    ? "font-semibold text-lg transition-all duration-300"
+                    : "text-lg hover:font-normal transition-all duration-300"
+                }
+                onClick={closeMenu}
               >
                 Home
               </NavLink>
               <NavLink
                 to="/vacancy"
-                className="font-normal text-lg hover:font-semibold"
+                className={({ isActive }) =>
+                  isActive
+                    ? "font-semibold text-lg transition-all duration-300"
+                    : "text-lg hover:font-normal transition-all duration-300"
+                }
+                onClick={closeMenu}
               >
                 Job Vacancy
               </NavLink>
               <NavLink
-                to="#"
-                className="font-normal text-lg hover:font-semibold"
+                to="/dashboard"
+                className={({ isActive }) =>
+                  isActive
+                    ? "font-semibold text-lg transition-all duration-300"
+                    : "text-lg hover:font-normal transition-all duration-300"
+                }
+                onClick={closeMenu}
               >
                 Dashboard
               </NavLink>
@@ -126,7 +155,7 @@ export const NavbarClient = () => {
           {!Cookies.get("token") && (
             <Link
               to="/login"
-              className="h-10 px-6 font-medium text-base rounded-md text-white bg-[#635BFF]  flex items-center hover:bg-opacity-80"
+              className="h-10 px-6 font-medium text-base rounded-md text-white bg-[#635BFF] flex items-center hover:bg-opacity-80"
             >
               Sign In
             </Link>
