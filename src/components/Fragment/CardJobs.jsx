@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useJobs } from "../../context/JobContext";
 
@@ -41,8 +42,14 @@ export const CardJobs = ({ limit }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {limitedJobs.length > 0 &&
-        limitedJobs.map((job) => (
-          <div className="bg-white px-4 py-4 rounded-xl" key={job.id}>
+        limitedJobs.map((job, index) => (
+          <motion.div
+            key={job.id}
+            className="bg-white px-4 py-4 rounded-xl"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 1 }}
+          >
             <Link to={`/job/${job.id}`}>
               <div className="flex flex-col h-[350px] justify-between">
                 <div className="flex flex-col gap-4">
@@ -87,7 +94,7 @@ export const CardJobs = ({ limit }) => {
                 </div>
               </div>
             </Link>
-          </div>
+          </motion.div>
         ))}
     </div>
   );

@@ -1,5 +1,6 @@
 import axios from "axios";
 import Cookies from "js-cookie";
+import { motion } from "framer-motion";
 import { Button } from "../Element/Button";
 import { InputForm } from "../Element/Input";
 import { useNavigate } from "react-router-dom";
@@ -59,7 +60,13 @@ export const FormRegister = () => {
   }, []);
 
   return (
-    <form className="flex flex-col gap-2" onSubmit={handleRegister}>
+    <motion.form
+      initial={{ opacity: 0, x: -50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5, delay: 0.8 }}
+      className="flex flex-col gap-2"
+      onSubmit={handleRegister}
+    >
       <InputForm
         label="Username"
         type="text"
@@ -105,8 +112,15 @@ export const FormRegister = () => {
         {isLoading ? "Register in..." : "Register"}
       </Button>
       {registerFailed && (
-        <p className="text-red-500 text-center text-sm">{registerFailed}</p>
+        <motion.p
+          initial={{ y: 50 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-red-500 text-center text-sm"
+        >
+          {registerFailed}
+        </motion.p>
       )}
-    </form>
+    </motion.form>
   );
 };

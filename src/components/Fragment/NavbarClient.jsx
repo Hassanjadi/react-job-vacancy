@@ -1,11 +1,38 @@
 import Cookies from "js-cookie";
-import React, { useState } from "react";
 import Logo from "../../assets/images/Logo.png";
-import { Link, NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+
+const navbarVariants = {
+  hidden: { opacity: 0, y: -50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.1,
+      type: "spring",
+      stiffness: 100,
+    },
+  },
+};
 
 export const NavbarClient = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -20,7 +47,13 @@ export const NavbarClient = () => {
   };
 
   return (
-    <div className="w-full py-5 z-50 fixed bg-[#F9F9F9]">
+    <motion.div
+      ref={ref}
+      className="w-full py-5 z-50 fixed bg-[#F9F9F9]"
+      initial="hidden"
+      animate={controls}
+      variants={navbarVariants}
+    >
       <div className="container mx-auto px-4 md:px-8 lg:px-16 flex justify-between items-center">
         <img src={Logo} alt="Logo LokerIn" className="h-10" />
         <div className="hidden lg:flex gap-8">
@@ -195,6 +228,6 @@ export const NavbarClient = () => {
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };

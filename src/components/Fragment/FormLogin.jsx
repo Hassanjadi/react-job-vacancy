@@ -1,5 +1,6 @@
 import axios from "axios";
 import Cookies from "js-cookie";
+import { motion } from "framer-motion";
 import { Button } from "../Element/Button";
 import { InputForm } from "../Element/Input";
 import { useNavigate } from "react-router-dom";
@@ -51,7 +52,13 @@ export const FormLogin = () => {
   }, []);
 
   return (
-    <form className="flex flex-col gap-5" onSubmit={handleLogin}>
+    <motion.form
+      initial={{ opacity: 0, x: -50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5, delay: 0.8 }}
+      className="flex flex-col gap-5"
+      onSubmit={handleLogin}
+    >
       <InputForm
         label="Email"
         type="email"
@@ -80,8 +87,15 @@ export const FormLogin = () => {
         {isLoading ? "Logging in..." : "Login"}
       </Button>
       {loginFailed && (
-        <p className="text-red-500 text-center text-sm">{loginFailed}</p>
+        <motion.p
+          initial={{ y: 20 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.3, delay: 0.3 }}
+          className="text-red-500 text-center text-sm"
+        >
+          {loginFailed}
+        </motion.p>
       )}
-    </form>
+    </motion.form>
   );
 };

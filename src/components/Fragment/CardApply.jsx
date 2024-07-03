@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Button } from "../Element/Button";
 import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
@@ -35,6 +36,17 @@ const handleSalary = (salary) => {
   return `${salary.toFixed(0)}${units[unitIndex]}`;
 };
 
+const containerVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
 export const CardApply = () => {
   const { id } = useParams();
   const [job, setJob] = useState({});
@@ -46,34 +58,51 @@ export const CardApply = () => {
   }, [id]);
 
   return (
-    <div className="bg-white rounded-xl p-8 mt-8 lg:h-80 lg:w-1/4 lg:-mt-44">
+    <motion.div
+      className="bg-white rounded-xl p-8 mt-8 lg:h-80 lg:w-1/4 lg:-mt-44"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
       <Button classname="bg-[#635BFF] text-white w-full">
         Apply for this position
       </Button>
-      <div className="flex justify-between my-4">
+      <motion.div
+        variants={containerVariants}
+        className="flex justify-between my-4"
+      >
         <p className="text-sm font-medium">Date Post</p>
         <p className="text-sm font-bold">{handleTime(job.created_at)}</p>
-      </div>
+      </motion.div>
       <hr />
-      <div className="flex justify-between my-4 text-sm">
+      <motion.div
+        variants={containerVariants}
+        className="flex justify-between my-4 text-sm"
+      >
         <p className="text-sm font-medium">Job type</p>
         <p className="text-sm font-bold">{job.job_type}</p>
-      </div>
+      </motion.div>
       <hr />
-      <div className="flex justify-between my-4 text-sm">
+      <motion.div
+        variants={containerVariants}
+        className="flex justify-between my-4 text-sm"
+      >
         <p className="text-sm font-medium">Job Status</p>
         <p className="text-sm font-bold">
           {job.job_status === 0 ? "Close" : "Open"}
         </p>
-      </div>
+      </motion.div>
       <hr />
-      <div className="flex justify-between my-4 text-sm">
+      <motion.div
+        variants={containerVariants}
+        className="flex justify-between my-4 text-sm"
+      >
         <p className="text-sm font-medium">Salary</p>
         <p className="text-sm font-bold">
           {handleSalary(job.salary_min)} - {handleSalary(job.salary_max)}
         </p>
-      </div>
+      </motion.div>
       <hr />
-    </div>
+    </motion.div>
   );
 };
