@@ -3,40 +3,10 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useJobs } from "../../context/JobContext";
 
-const handleTime = (dateTime) => {
-  const currentDate = new Date();
-  const targetDate = new Date(dateTime);
-
-  const timeDifference = currentDate - targetDate;
-  const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-
-  if (daysDifference === 0) {
-    return "Today";
-  } else if (daysDifference === 1) {
-    return "Yesterday";
-  } else {
-    return `${daysDifference} days ago`;
-  }
-};
-
-const handleSalary = (salary) => {
-  if (typeof salary !== "number") {
-    return "Invalid input";
-  }
-
-  const units = ["", "k", "M", "B", "T"];
-  let unitIndex = 0;
-  while (salary >= 1000 && unitIndex < units.length - 1) {
-    salary /= 1000;
-    unitIndex++;
-  }
-
-  return `${salary.toFixed(0)}${units[unitIndex]}`;
-};
-
 export const CardJobs = ({ limit }) => {
-  const { jobs } = useJobs();
-
+  const { state, handleFunction } = useJobs();
+  const { jobs } = state;
+  const { handleSalary, handleTime } = handleFunction;
   const limitedJobs = jobs.slice(0, limit);
 
   return (
