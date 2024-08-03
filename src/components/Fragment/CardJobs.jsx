@@ -4,9 +4,7 @@ import { Link } from "react-router-dom";
 import { useJobs } from "../../context/JobContext";
 
 export const CardJobs = ({ limit }) => {
-  const { state, handleFunction } = useJobs();
-  const { jobs } = state;
-  const { handleSalary, handleTime } = handleFunction;
+  const { jobs, handleSalary, handleTime } = useJobs();
   const limitedJobs = jobs.slice(0, limit);
 
   return (

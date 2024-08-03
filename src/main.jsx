@@ -1,19 +1,19 @@
 import "./index.css";
 import React from "react";
 import { Home } from "./pages/Home";
-import { ErrorPage } from "./pages/404";
 import ReactDOM from "react-dom/client";
+import { ErrorPage } from "./pages/404";
+import { Profile } from "./pages/Profile";
 import { Vacancy } from "./pages/Vacancy";
 import { LoginPage } from "./pages/Login";
-import { DataForm } from "./pages/DataForm";
 import { ListJobs } from "./pages/ListJobs";
+import { DataForm } from "./pages/DataForm";
 import { Dashboard } from "./pages/Dashboard";
 import { RegisterPage } from "./pages/Register";
 import { DetailJobPage } from "./pages/DetailJob";
+import { JobProvider } from "./context/JobContext";
 import { ProtectedRoute } from "./components/Utils/ProtectedRoute";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { JobProvider } from "./context/JobContext";
-import { Profile } from "./pages/Profile";
 
 const router = createBrowserRouter([
   {

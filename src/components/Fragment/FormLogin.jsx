@@ -1,52 +1,39 @@
-import axios from "axios";
 import Cookies from "js-cookie";
 import { motion } from "framer-motion";
 import { Button } from "../Element/Button";
 import { InputForm } from "../Element/Input";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+import { login } from "../../services/auth.service";
 
 export const FormLogin = () => {
   const navigate = useNavigate();
-
-  const [input, setInput] = useState({
-    email: "",
-    password: "",
-  });
-
   const [loginFailed, setLoginFailed] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleInput = (event) => {
-    const { name, value } = event.target;
-    setInput({ ...input, [name]: value });
-  };
-
   const handleLogin = (event) => {
     event.preventDefault();
-    const { email, password } = input;
 
     setIsLoading(true);
 
-    axios
-      .post("https://dev-example.sanbercloud.com/api/login", {
-        email,
-        password,
-      })
-      .then((res) => {
-        const data = res.data;
-        Cookies.set("token", data.token, { expires: 1 });
+    const data = {
+      email: event.target.email.value,
+      password: event.target.password.value,
+    };
+
+    login(data, (status, res) => {
+      if (status) {
+        Cookies.set("token", res, { expires: 1 });
         navigate("/");
-      })
-      .catch((error) => {
+      } else {
         setLoginFailed("Login failed. Please check your email and password.");
-      })
-      .finally(() => {
         setIsLoading(false);
-      });
+      }
+    });
   };
 
   const emailRef = useRef(null);
+
   useEffect(() => {
     emailRef.current.focus();
   }, []);
@@ -65,20 +52,17 @@ export const FormLogin = () => {
         name="email"
         placeholder="example@gmail.com"
         ref={emailRef}
-        value={input.email}
-        onChange={handleInput}
         required
       />
       <InputForm
         label="Password"
         type="password"
         name="password"
-        placeholder="8+ password"
-        value={input.password}
-        onChange={handleInput}
+        placeholder="********"
         required
         minLength="8"
       />
+
       <Button
         classname="bg-[#635BFF] w-full"
         type="submit"

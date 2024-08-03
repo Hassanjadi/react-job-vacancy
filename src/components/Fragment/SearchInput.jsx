@@ -1,4 +1,3 @@
-// SearchInput.js
 import React from "react";
 import { Input } from "../Element/Input/Input";
 import { useJobs } from "../../context/JobContext";
