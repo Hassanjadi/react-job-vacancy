@@ -1,39 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { useJobs } from "../../context/JobContext";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 export const ListJobs = () => {
-  const navigate = useNavigate();
-  const { state, handleFunction } = useJobs();
-  const { jobs, setCurrentId, setInput } = state;
-  const { handleDelete } = handleFunction;
-
-  const handleEdit = (event) => {
-    let id = parseInt(event.target.value);
-    setCurrentId(id);
-
-    axios
-      .get(`https://dev-example.sanbercloud.com/api/job-vacancy/${id}`)
-      .then((res) => {
-        let data = res.data;
-        navigate("/dashboard/form");
-
-        setInput({
-          title: data.title,
-          job_description: data.job_description,
-          job_qualification: data.job_qualification,
-          job_type: data.job_type,
-          job_tenure: data.job_tenure,
-          job_status: data.job_status,
-          company_name: data.company_name,
-          company_image_url: data.company_image_url,
-          company_city: data.company_city,
-          salary_min: data.salary_min,
-          salary_max: data.salary_max,
-        });
-      });
-  };
+  const { jobs, handleDelete } = useJobs();
 
   return (
     <div className="p-4 sm:ml-64">
@@ -52,6 +21,9 @@ export const ListJobs = () => {
                   Description
                 </th>
                 <th scope="col" className="px-6 py-3">
+                  Company
+                </th>
+                <th scope="col" className="px-6 py-3">
                   Qualification
                 </th>
                 <th scope="col" className="px-6 py-3">
@@ -62,9 +34,6 @@ export const ListJobs = () => {
                 </th>
                 <th scope="col" className="px-6 py-3">
                   Status
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Company
                 </th>
                 <th scope="col" className="px-6 py-3">
                   Images
@@ -95,29 +64,28 @@ export const ListJobs = () => {
                       >
                         {job.title}
                       </th>
-                      <td className="px-6 py-4">{job.job_description}</td>
-                      <td className="px-6 py-4">{job.job_qualification}</td>
+                      <td className="px-6 py-4 line-clamp-2">
+                        {job.job_description}
+                      </td>
+                      <td className="px-6 py-4">{job.company_name}.</td>
+                      <td className="px-6 py-4 line-clamp-2">
+                        {job.job_qualification}
+                      </td>
                       <td className="px-6 py-4">{job.job_type}</td>
                       <td className="px-6 py-4">{job.job_tenure}</td>
                       <td className="px-6 py-4">{job.job_status}</td>
-                      <td className="px-6 py-4">{job.company_name}.</td>
                       <td className="px-6 py-4">{job.company_image_url}</td>
                       <td className="px-6 py-4">{job.company_city}</td>
                       <td className="px-6 py-4">{job.salary_min}</td>
                       <td className="px-6 py-4">{job.salary_max}</td>
                       <td className="px-6 py-4 text-center">
                         <button
-                          onClick={handleDelete}
-                          value={job.id}
+                          onClick={() => handleDelete(job.id)}
                           className="font-medium text-red-600 dark:text-red-500 hover:underline ms-3"
                         >
                           Remove
                         </button>
-                        <button
-                          onClick={handleEdit}
-                          value={job.id}
-                          className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                        >
+                        <button className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                           Edit
                         </button>
                       </td>

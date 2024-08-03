@@ -1,4 +1,4 @@
-import { getJobs } from "../services/jobs.services";
+import { deleteJob, getJobs } from "../services/jobs.services";
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 const JobContext = createContext();
@@ -9,12 +9,36 @@ export const JobProvider = ({ children }) => {
   const [companyCity, setCompanyCity] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [salaryRange, setSalaryRange] = useState([0, Infinity]);
+  const [fetchStatus, setFetchStatus] = useState(true);
 
   useEffect(() => {
-    getJobs((data) => {
-      setJobs(data);
+    if (fetchStatus === true) {
+      getJobs((data) => {
+        setJobs(data);
+      });
+
+      setFetchStatus(false);
+    }
+  }, [fetchStatus, setFetchStatus]);
+
+  const handleDelete = (jobId) => {
+    const confirmDelete = window.confirm(
+      "Apakah Anda yakin ingin menghapus lowongan pekerjaan ini?"
+    );
+    if (!confirmDelete) {
+      return;
+    }
+
+    deleteJob(jobId, (status, res) => {
+      if (status) {
+        console.log("Lowongan pekerjaan berhasil dihapus:", res);
+        setFetchStatus(true);
+      } else {
+        console.log("Gagal menghapus lowongan pekerjaan:", res);
+        alert("Gagal menghapus lowongan pekerjaan. Silahkan coba lagi.");
+      }
     });
-  }, []);
+  };
 
   const filteredJobs = jobs.filter((job) => {
     const matchesSearch = job.title
@@ -70,6 +94,9 @@ export const JobProvider = ({ children }) => {
         setSalaryRange,
         handleSalary,
         handleTime,
+        fetchStatus,
+        setFetchStatus,
+        handleDelete,
       }}
     >
       {children}

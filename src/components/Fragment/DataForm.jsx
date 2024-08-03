@@ -1,13 +1,41 @@
-//DataForm.jsx
 import React from "react";
 import { InputForm } from "../Element/Input";
 import { TextareaForm } from "../Element/Textarea";
+import { createJob } from "../../services/jobs.services";
 import { useJobs } from "../../context/JobContext";
+import { useNavigate } from "react-router-dom";
 
 export const DataForm = () => {
-  const { state, handleFunction } = useJobs();
-  const { input, currentId } = state;
-  const { handleInput, handleSubmit } = handleFunction;
+  const navigate = useNavigate();
+  const { setFetchStatus } = useJobs();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const data = {
+      title: event.target.title.value,
+      job_description: event.target.job_description.value,
+      job_qualification: event.target.job_qualification.value,
+      job_type: event.target.job_type.value,
+      job_tenure: event.target.job_tenure.value,
+      job_status: event.target.job_status.value,
+      company_name: event.target.company_name.value,
+      company_image_url: event.target.company_image_url.value,
+      company_city: event.target.company_city.value,
+      salary_min: event.target.salary_min.value,
+      salary_max: event.target.salary_max.value,
+    };
+
+    createJob(data, (status, res) => {
+      if (status) {
+        console.log("Job created successfully:", res);
+        setFetchStatus(true);
+        navigate("/dashboard/list-job-vacancy");
+      } else {
+        console.log("Failed to create job:", res);
+      }
+    });
+  };
 
   return (
     <div className="p-4 sm:ml-64">
@@ -19,16 +47,12 @@ export const DataForm = () => {
               type="text"
               name="title"
               placeholder="Fullstack Web Developer"
-              value={input.title}
-              onChange={handleInput}
             />
             <InputForm
               label="Company City"
               type="text"
               name="company_city"
               placeholder="Jakarta"
-              value={input.company_city}
-              onChange={handleInput}
             />
 
             <InputForm
@@ -36,16 +60,12 @@ export const DataForm = () => {
               type="text"
               name="job_type"
               placeholder="Onsite"
-              value={input.job_type}
-              onChange={handleInput}
             />
             <InputForm
               label="Job Tenure"
               type="text"
               name="job_tenure"
               placeholder="Fulltime"
-              value={input.job_tenure}
-              onChange={handleInput}
             />
             <TextareaForm
               rows="3"
@@ -53,8 +73,6 @@ export const DataForm = () => {
               name="job_description"
               label="Description"
               placeholder="Description"
-              value={input.job_description}
-              onChange={handleInput}
             />
             <TextareaForm
               rows="3"
@@ -62,8 +80,6 @@ export const DataForm = () => {
               name="job_qualification"
               label="Qualification"
               placeholder="Qualification"
-              value={input.job_qualification}
-              onChange={handleInput}
             />
             <InputForm
               label="Status"
@@ -71,16 +87,12 @@ export const DataForm = () => {
               name="job_status"
               placeholder="0"
               max="1"
-              value={input.job_status}
-              onChange={handleInput}
             />
             <InputForm
               label="Company Name"
               type="text"
               name="company_name"
               placeholder="Google"
-              value={input.company_name}
-              onChange={handleInput}
             />
 
             <InputForm
@@ -88,24 +100,18 @@ export const DataForm = () => {
               type="number"
               name="salary_min"
               placeholder="100000"
-              value={input.salary_min}
-              onChange={handleInput}
             />
             <InputForm
               label="Salary Max"
               type="number"
               name="salary_max"
               placeholder="500000"
-              value={input.salary_max}
-              onChange={handleInput}
             />
             <InputForm
               label="Url Image"
               type="text"
               name="company_image_url"
               placeholder="http://"
-              value={input.company_image_url}
-              onChange={handleInput}
             />
           </div>
           <div className="flex justify-end">
@@ -113,7 +119,7 @@ export const DataForm = () => {
               type="submit"
               className="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
             >
-              {currentId === -1 ? "Create Job" : "Save"}
+              Create Job
             </button>
           </div>
         </form>

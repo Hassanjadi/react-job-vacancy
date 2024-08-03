@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { getUsername } from "../../services/auth.service";
 
 const navbarVariants = {
   hidden: { opacity: 0, y: -50 },
@@ -33,6 +34,10 @@ export const NavbarClient = () => {
       controls.start("visible");
     }
   }, [controls, inView]);
+
+  useEffect(() => {
+    getUsername(token);
+  });
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);

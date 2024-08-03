@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export const getJobs = (callback) => {
   axios
@@ -19,5 +20,44 @@ export const getDetailJob = (id, callback) => {
     })
     .catch((err) => {
       console.log(err);
+    });
+};
+
+export const createJob = (data, callback) => {
+  const token = Cookies.get("token");
+
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
+
+  axios
+    .post("https://dev-example.sanbercloud.com/api/job-vacancy", data, {
+      headers,
+    })
+    .then((res) => {
+      callback(true, res.data);
+    })
+    .catch((error) => {
+      console.log(false, error);
+    });
+};
+
+export const deleteJob = (id, callback) => {
+  const token = Cookies.get("token");
+
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
+
+  axios
+    .delete(`https://dev-example.sanbercloud.com/api/job-vacancy/${id}`, {
+      headers,
+    })
+    .then((res) => {
+      callback(true, res.data);
+    })
+    .catch((error) => {
+      console.log(error);
+      console.log(false, error);
     });
 };
