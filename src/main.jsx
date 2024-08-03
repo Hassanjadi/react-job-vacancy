@@ -26,6 +26,10 @@ const router = createBrowserRouter([
     element: <Vacancy />,
   },
   {
+    path: "/job/:id",
+    element: <DetailJobPage />,
+  },
+  {
     path: "/dashboard",
     element: (
       <ProtectedRoute requiresAuth={true}>
@@ -72,10 +76,6 @@ const router = createBrowserRouter([
         <LoginPage />
       </ProtectedRoute>
     ),
-  },
-  {
-    path: "/job/:id",
-    element: <DetailJobPage />,
   },
 ]);
 

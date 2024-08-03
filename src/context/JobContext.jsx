@@ -23,7 +23,7 @@ export const JobProvider = ({ children }) => {
 
   const handleDelete = (jobId) => {
     const confirmDelete = window.confirm(
-      "Apakah Anda yakin ingin menghapus lowongan pekerjaan ini?"
+      "Are you sure you want to delete this job vacancy?"
     );
     if (!confirmDelete) {
       return;
@@ -31,11 +31,11 @@ export const JobProvider = ({ children }) => {
 
     deleteJob(jobId, (status, res) => {
       if (status) {
-        console.log("Lowongan pekerjaan berhasil dihapus:", res);
+        console.log("Job vacancy successfully deleted:", res);
         setFetchStatus(true);
       } else {
-        console.log("Gagal menghapus lowongan pekerjaan:", res);
-        alert("Gagal menghapus lowongan pekerjaan. Silahkan coba lagi.");
+        console.log("Failed to delete job posting:", res);
+        alert("Failed to delete job vacancy. Please try again.");
       }
     });
   };
