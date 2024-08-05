@@ -5,11 +5,25 @@ const JobContext = createContext();
 
 export const JobProvider = ({ children }) => {
   const [jobs, setJobs] = useState([]);
+  const [currentId, setCurrentId] = useState(-1);
   const [jobTenure, setJobTenure] = useState("");
   const [companyCity, setCompanyCity] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
-  const [salaryRange, setSalaryRange] = useState([0, Infinity]);
   const [fetchStatus, setFetchStatus] = useState(true);
+  const [salaryRange, setSalaryRange] = useState([0, Infinity]);
+  const [input, setInput] = useState({
+    title: "",
+    job_description: "",
+    job_qualification: "",
+    job_type: "",
+    job_tenure: "",
+    job_status: "",
+    company_name: "",
+    company_image_url: "",
+    company_city: "",
+    salary_min: "",
+    salary_max: "",
+  });
 
   useEffect(() => {
     if (fetchStatus === true) {
@@ -97,6 +111,10 @@ export const JobProvider = ({ children }) => {
         fetchStatus,
         setFetchStatus,
         handleDelete,
+        input,
+        setInput,
+        currentId,
+        setCurrentId,
       }}
     >
       {children}

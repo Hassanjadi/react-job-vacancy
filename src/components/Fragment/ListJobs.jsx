@@ -1,8 +1,37 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useJobs } from "../../context/JobContext";
+import { updateJob } from "../../services/jobs.services";
 
 export const ListJobs = () => {
-  const { jobs, handleDelete } = useJobs();
+  const navigate = useNavigate();
+  const { jobs, handleDelete, setInput, setCurrentId } = useJobs();
+
+  const handleEdit = (id, data) => {
+    setCurrentId(id);
+    updateJob(id, data, (success, response) => {
+      if (success) {
+        console.log("Job updated successfully:", response);
+        navigate("/dashboard/form");
+
+        setInput({
+          title: response.title,
+          job_description: response.job_description,
+          job_qualification: response.job_qualification,
+          job_type: response.job_type,
+          job_tenure: response.job_tenure,
+          job_status: response.job_status,
+          company_name: response.company_name,
+          company_image_url: response.company_image_url,
+          company_city: response.company_city,
+          salary_min: response.salary_min,
+          salary_max: response.salary_max,
+        });
+      } else {
+        console.error("Failed to update job:", response);
+      }
+    });
+  };
 
   return (
     <div className="p-4 sm:ml-64">
@@ -85,7 +114,10 @@ export const ListJobs = () => {
                         >
                           Remove
                         </button>
-                        <button className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                        <button
+                          onClick={() => handleEdit(job.id)}
+                          className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                        >
                           Edit
                         </button>
                       </td>

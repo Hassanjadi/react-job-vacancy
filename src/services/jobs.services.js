@@ -35,9 +35,31 @@ export const createJob = (data, callback) => {
       headers,
     })
     .then((res) => {
+      console.log(res);
       callback(true, res.data);
     })
     .catch((error) => {
+      console.log(false, error);
+    });
+};
+
+export const updateJob = (id, data, callback) => {
+  const token = Cookies.get("token");
+
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
+
+  axios
+    .put(`https://dev-example.sanbercloud.com/api/job-vacancy/${id}`, data, {
+      headers,
+    })
+    .then((res) => {
+      console.log(res);
+      callback(true, res.data);
+    })
+    .catch((error) => {
+      console.log(error);
       console.log(false, error);
     });
 };
