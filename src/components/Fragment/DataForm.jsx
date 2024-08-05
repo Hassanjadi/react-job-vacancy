@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { InputForm } from "../Element/Input";
 import { useNavigate } from "react-router-dom";
 import { TextareaForm } from "../Element/Textarea";
@@ -20,7 +20,6 @@ export const DataForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log(input);
     const data = input;
 
     if (currentId === -1) {
@@ -37,6 +36,7 @@ export const DataForm = () => {
       updateJob(currentId, data, (success, response) => {
         if (success) {
           console.log("Job updated successfully:", response);
+          setFetchStatus(true);
           navigate("/dashboard/list-job-vacancy");
         } else {
           console.error("Failed to update job:", response);
